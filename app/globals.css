@@ -2,26 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body,
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+.space {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #0b0d17 0%, #020204 100%);
+  overflow: hidden;
+}
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: rotate 240s linear infinite;
+}
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      2px 2px at 25px 5px,
+      white,
+      rgba(255, 255, 255, 0)
+    ),
+    radial-gradient(2px 2px at 50px 25px, white, rgba(255, 255, 255, 0)),
+    radial-gradient(2px 2px at 125px 20px, white, rgba(255, 255, 255, 0)),
+    radial-gradient(3px 3px at 50px 75px, white, rgba(255, 255, 255, 0)),
+    radial-gradient(3px 3px at 15px 125px, white, rgba(255, 255, 255, 0)),
+    radial-gradient(4px 4px at 110px 80px, white, rgba(255, 255, 255, 0));
+  background-repeat: repeat;
+  background-size: 250px 250px;
+  opacity: 0;
+  animation: twinkle 5s infinite;
+}
+.stars::after {
+  background-size: 300px 300px;
+  animation-delay: 2.5s;
+}
+.nebula {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: radial-gradient(
+      circle at 30% 60%,
+      rgba(50, 0, 100, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 40%,
+      rgba(0, 100, 100, 0.15) 0%,
+      transparent 50%
+    );
+  filter: blur(40px);
+  animation: nebulaShift 30s infinite alternate;
+}
+.show-nav:hover .line {
+  border: 2px solid white;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+@keyframes nebulaShift {
+  0% {
+    transform: translate(-5%, -5%) rotate(0deg);
+  }
+  100% {
+    transform: translate(5%, 5%) rotate(5deg);
+  }
 }
