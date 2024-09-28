@@ -22,7 +22,7 @@ const LandingBanner = () => {
   }, [launchApp]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-[100vh] overflow-hidden">
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center z-30 bg-black bg-opacity-50">
           <Loader2 className="w-12 h-12 animate-spin text-blue-500" />

@@ -29,7 +29,7 @@ const HeaderBanner = () => {
       <div className="flex flex-col md:flex-row justify-center items-center p-4 max-w-screen-2xl mx-auto">
         <div className="text-white text-center md:text-left p-4 h-96 w-3/4">
           <h3 className="text-5xl font-bold py-6">
-            Let's build the future of science, together
+            Let&apos;s build the future of science, together
           </h3>
           <p className="pb-24 text-md pr-8">
             New infrastructure for the next era of science

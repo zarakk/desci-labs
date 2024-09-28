@@ -50,7 +50,13 @@ const DemoInterface = () => {
   const { launchApp } = useSelector((state: RootState) => state.launchApp);
 
   return (
-    <div className="app flex text-black bg-[#282828] w-full ">
+    <div
+      className={`${
+        launchApp
+          ? "app flex text-black bg-[#282828] w-full h-screen"
+          : "app flex text-black bg-[#282828] w-full"
+      }`}
+    >
       <div
         style={{
           scrollbarWidth: "none",
@@ -64,8 +70,8 @@ const DemoInterface = () => {
         />
       </div>
       <div
-        className={`content p-4 text-white bg-[#1b1b1b] w-full h-[70vh] overflow-auto transition-all duration-500 ease-in-out relative
-          ${launchApp ? "h-[100vh] opacity-100" : "opacity-100"}
+        className={`content p-4 text-white bg-[#1b1b1b] w-full  overflow-auto transition-all duration-500 ease-in-out relative
+          ${launchApp ? "h-[100vh] opacity-100 " : "opacity-100 h-[70vh]"}
         `}
         style={{
           scrollbarWidth: "none",
@@ -76,7 +82,6 @@ const DemoInterface = () => {
           {activeSection === "Add" && <ResearchDashboard />}
           {activeSection === "User" && <ResearchProfile />}
           {activeSection === "Explore" && <Explore />}
-          {activeSection === "Profile" && "inbox"}
         </div>
       </div>
     </div>
